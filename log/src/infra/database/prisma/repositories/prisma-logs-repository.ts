@@ -3,7 +3,7 @@ import { Record } from "../../../../domain/log";
 import { prisma } from "../prisma";
 
 export class PrismaLogsRepository implements LogsRepository {
-  async findByEmail(username: string): Promise<Record | null> {
+  async findByUserName(username: string): Promise<Record | null> {
     const Log = await prisma.Log.findUnique({
       where: {
         username,

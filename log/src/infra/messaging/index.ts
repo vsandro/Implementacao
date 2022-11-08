@@ -1,11 +1,18 @@
 import 'dotenv/config';
 import { kafka } from "./kafka/kafka"
 
+import { prisma } from '../../../src/database/prismaClient';
+
 interface PurchasesNewPurchaseMessage {
   user: {
     username: string;
     message: string;
   }
+}
+
+interface IAuthenticateUser {
+  username: string;
+  password: string;
 }
 
 async function main() {
@@ -25,13 +32,19 @@ async function main() {
 
       const purchase: PurchasesNewPurchaseMessage = JSON.parse(purchaseJSON);
 
+      console.log(`[Record] User ${purchase.user.username} - ${purchase.user.message}`)
 
-
-      console.log(`User ${purchase.user.username} to ${purchase.user.message}`)
+      const record = await prisma.records.create({
+        data: {
+          username: purchase.user.username,
+          message: purchase.user.message,
+        },
+      })     
+       
     },
   })
 }
 
 main().then(() => {
-  console.log('[Log!!!] Listening to Kafka messages')
+  console.log('[Log] Listening to Kafka messages')
 })
