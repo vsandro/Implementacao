@@ -19,5 +19,4 @@ routes.get('/customers', EnsureAuthenticateUser, (req, res, next) => {
     res.json([,{id:1,nome:'João'}, {id:2,nome:'Maria'}]);
 })
 
-
 export { routes };

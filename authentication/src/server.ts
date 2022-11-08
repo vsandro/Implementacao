@@ -32,7 +32,6 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
   });
 });
 
-
 const PORT = 3000
 
 app.listen(PORT, () => console.log('Server is running in PORT ' + PORT));

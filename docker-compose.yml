@@ -2,7 +2,7 @@ version: '3'
 
 services:
   database:
-    container_name: authenticationAPP
+    container_name: authenticationCloudComputing
     image: 'postgres:alpine'
     ports:
       - '5432:5432'
@@ -15,7 +15,7 @@ services:
       - app-net
 
   zookeeper:
-    container_name: authenticationAPP_zookeeper
+    container_name: authenticationCloudComputing_zookeeper
     image: 'bitnami/zookeeper:3'
     ports:
       - '2181:2181'
@@ -27,7 +27,7 @@ services:
       - app-net
 
   kafka:
-    container_name: authenticationAPP_kafka
+    container_name: authenticationCloudComputing_kafka
     image: 'bitnami/kafka:2'
     ports:
       - '9092:9092'
