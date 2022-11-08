@@ -31,7 +31,7 @@ export class AuthenticateUserModel {
     const passwordMatch = await compare(password, user.password);
 
     if (!passwordMatch) {
-      await this.messagingAdapter.sendMessage('Authentications.new-Authorization', {
+      await this.messagingAdapter.sendMessage('authentications.new-authorization', {
         user: {
           username: username,
           message: "access denied",
@@ -53,7 +53,7 @@ export class AuthenticateUserModel {
       expiresIn: '1d', // Validade do TOKEN de acesso
     })
 
-    await this.messagingAdapter.sendMessage('Authentications.new-Authorization', {
+    await this.messagingAdapter.sendMessage('authentications.new-authorization', {
       user: {
         username: username,
         message: "authenticated",
