@@ -1,10 +1,16 @@
 # IPCA
-Mestrado em Engenharia Informática
-**Sistemas de Computação na Cloud** professor Miguel Lopes
+**Mestrado em Engenharia Informática**
+
+Jorge Santos - 26831
+Sandro Alves - 24460
+
+**Sistemas de Computação na Cloud** 
+
+Professor Miguel Lopes
 
 ## 1. Introdução
 
-Aplicação de autenticação desenvolvida com micro serviços.
+Aplicação de autenticação com microsserviços.
 
 <p align='center'>
 <img src='https://i.giphy.com/media/WOg7qdA8bRrWutWH9Z/giphy.gif' alt='gif animado'> 
@@ -18,11 +24,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Vestibulum mollis mauris et libero suscipit, non convallis nisl commodo. Aenean ut risus eros.
 Aliquam blandit, orci vitae auctor fermentum.
 
-Foram realizados o desenvolvimento de 2 micro serviços:
+Implementação de 2 microsserviços:
 
-- Micro serviço de autenticação (authentication)
+- Microsserviço de autenticação (authentication)
 
-- Micro serviço de logs (logs)
+- Microsserviço de armazenamento de logs (log)
 
 
 ## 3. Tecnologias (Techs)
@@ -59,6 +65,11 @@ db_authentication (criar um banco com este nome)
 - Criação dos objetos do banco de dados no PostgreSQL:
 
 ```sh
+cd log
+npx prisma migrate dev
+```
+
+```sh
 cd authentication
 npx prisma migrate dev
 ```
@@ -68,6 +79,11 @@ npx prisma migrate dev
 - Instale as dependências do projeto com o comando:
 
 ```sh
+cd log
+npm install
+```
+
+```sh
 cd authentication
 npm install
 ```
@@ -75,6 +91,12 @@ npm install
 - Rode o backend do projeto na sua máquina com:
 
 ```sh
+cd log
+npm run start:dev
+```
+
+```sh
+cd authentication
 npm run dev
 ```
 
@@ -88,8 +110,29 @@ cursus dignissim faucibus
 ```
 
 
+**Insomnia**
+
+- Nulla cursus dignissim faucibus. Proin leo sapien, ultrices ut turpis nec, lobortis eleifend felis.
+
+```sh
+Authenticate - login
+
+http://localhost:3000/user/authenticate
+```
+
+```sh
+Authenticate - logout
+http://localhost:3000/user/logout
+```
+
+```sh
+Authenticate - create user
+
+http://localhost:3000/user
+```
+
 ## 6. Autoria
 
-Este projeto foi desenvolvido pelos alunos [Jorge Santos - 26831] e [Sandro Alves - 24460](https://www.linkedin.com/in/vsandro) conforme requisitos definidos pelo professor e orientador Miguel Lopes.
+Este projeto foi desenvolvido pelos alunos [Jorge Santos - 26831] e [Sandro Alves - 24460](https://www.linkedin.com/in/vsandro) conforme requisitos definidos pelo professor e orientador Miguel Lopes na UC de Sistemas de Computação na Cloud.
 
 
