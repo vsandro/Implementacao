@@ -4,7 +4,7 @@ Mestrado em Engenharia Informática
 
 ## 1. Introdução
 
-Aplicação de autenticação desenvolvida em micro serviços.
+Aplicação de autenticação desenvolvida com micro serviços.
 
 <p align='center'>
 <img src='https://i.giphy.com/media/WOg7qdA8bRrWutWH9Z/giphy.gif' alt='gif animado'> 
@@ -18,11 +18,16 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Vestibulum mollis mauris et libero suscipit, non convallis nisl commodo. Aenean ut risus eros.
 Aliquam blandit, orci vitae auctor fermentum.
 
+Foram realizados o desenvolvimento de 2 micro serviços:
+
+- Micro serviço de autenticação (authentication)
+
+- Micro serviço de logs (logs)
+
 
 ## 3. Tecnologias (Techs)
 
 - NodeJs
-- ValidatingToken
 - Banco de dados PostgreSQL
 - Knex migrations
 - Web Token (JWT)
@@ -30,12 +35,12 @@ Aliquam blandit, orci vitae auctor fermentum.
 
 ## 4. Funcionalidades
 
-- CRUD users;
 - Login;
-- Register.
+- Logout;
+- CRUD users;
 
 
-## 5. Instalação e execução. :octocat:
+## 5. Instalação e execução.
 
 - [Clone](https://help.github.com/articles/cloning-a-repository/) o projeto na sua máquina executando o seguinte comando no seu terminal:
 
