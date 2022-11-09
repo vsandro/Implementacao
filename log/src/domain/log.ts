@@ -1,13 +1,13 @@
 import crypto from 'node:crypto';
 
-interface LogProps {
+interface RecordProps {
   username: string;
   message: string;
 }
 
-export class Log {
+export class Record {
   private _id: string;
-  private props: LogProps;
+  private props: RecordProps;
 
   get id(): string {
     return this._id;
@@ -21,7 +21,7 @@ export class Log {
     return this.props.message;
   }
 
-  constructor(props: LogProps, id?: string) {
+  constructor(props: RecordProps, id?: string) {
     this._id = id ?? crypto.randomUUID();
     this.props = props;
   }

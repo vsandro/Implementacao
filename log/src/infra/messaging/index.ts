@@ -3,41 +3,36 @@ import { kafka } from "./kafka/kafka"
 
 import { prisma } from '../../../src/database/prismaClient';
 
-interface PurchasesNewPurchaseMessage {
+interface NewMessage {
   user: {
     username: string;
     message: string;
   }
 }
 
-interface IAuthenticateUser {
-  username: string;
-  password: string;
-}
-
 async function main() {
    
-  const consumer = kafka.consumer({ groupId: 'logs-group', allowAutoTopicCreation: true })
+  const consumer = kafka.consumer({ groupId: 'record-logs-group', allowAutoTopicCreation: true })
 
   await consumer.connect()
   await consumer.subscribe({ topic: 'authentications.new-authorization' })
 
   await consumer.run({
     eachMessage: async ({ message }) => {
-      const purchaseJSON = message.value?.toString();
+      const recordAuthenticationJSON = message.value?.toString();
 
-      if (!purchaseJSON) {
+      if (!recordAuthenticationJSON) {
         return;
       }
 
-      const purchase: PurchasesNewPurchaseMessage = JSON.parse(purchaseJSON);
+      const recordAuthentication: NewMessage = JSON.parse(recordAuthenticationJSON);
 
-      console.log(`[Record] User ${purchase.user.username} - ${purchase.user.message}`)
+      console.log(`[Record] User ${recordAuthentication.user.username} - ${recordAuthentication.user.message}`)
 
       const record = await prisma.records.create({
         data: {
-          username: purchase.user.username,
-          message: purchase.user.message,
+          username: recordAuthentication.user.username,
+          message: recordAuthentication.user.message,
         },
       })     
        

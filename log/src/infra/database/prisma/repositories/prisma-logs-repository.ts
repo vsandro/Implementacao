@@ -1,4 +1,4 @@
-import { LogsRepository } from "../../../../application/repositories/logs-repository";
+import { LogsRepository } from "../../../../application/repositories/records-repository";
 import { Record } from "../../../../domain/log";
 import { prisma } from "../prisma";
 

@@ -1,7 +1,7 @@
-import { Log } from "../../domain/log";
-import { LogsRepository } from "../repositories/logs-repository";
+import { Record } from "../../domain/log";
+import { RecordsRepository } from "../repositories/records-repository";
 
-interface RegisteLogRequest {
+interface RegisteRecordRequest {
   user: {
     username: string;
     message: string;
@@ -11,14 +11,14 @@ interface RegisteLogRequest {
 
 export class RegisteUserToLog {
   constructor(
-    private logsRepository: LogsRepository,
+    private logsRepository: RecordsRepository,
   ) {}
 
-  async execute(request: RegisteLogRequest): Promise<void> {
+  async execute(request: RegisteRecordRequest): Promise<void> {
     let log = await this.logsRepository.findByUserName(request.user.username);
 
     if (!log) {
-      log = new Log({
+      log = new Record({
         username: request.user.username,
         message: request.user.message,
       })
@@ -26,12 +26,5 @@ export class RegisteUserToLog {
       await this.logsRepository.create(log)
     }
 
-    // const registe = new Record({
-    //   logId: log.id,
-    //   createdAt: new Date(),
-    //   purchasesEnrolledByPurchaseId: request.purchasesEnrolledByPurchaseId,
-    // })
-
-    // await this.logsRepository.create(registe);
   }
 }

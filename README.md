@@ -2,6 +2,7 @@
 **Mestrado em Engenharia Informática**
 
 Jorge Santos - 26831
+
 Sandro Alves - 24460
 
 **Sistemas de Computação na Cloud** 
@@ -59,7 +60,8 @@ git clone https://github.com/vsandro/Implementacao.git
 - Criação do banco de dados no PostgreSQL:
 
 ```sh
-db_authentication (criar um banco com este nome)
+db_authentication
+db_log
 ```
 
 - Criação dos objetos do banco de dados no PostgreSQL:
@@ -92,7 +94,7 @@ npm install
 
 ```sh
 cd log
-npm run start:dev
+npm run dev
 ```
 
 ```sh
@@ -116,7 +118,6 @@ cursus dignissim faucibus
 
 ```sh
 Authenticate - login
-
 http://localhost:3000/user/authenticate
 ```
 
@@ -127,7 +128,6 @@ http://localhost:3000/user/logout
 
 ```sh
 Authenticate - create user
-
 http://localhost:3000/user
 ```
 
