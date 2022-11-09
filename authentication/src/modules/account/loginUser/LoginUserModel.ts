@@ -29,8 +29,8 @@ export class AuthenticateUserModel {
     }    
     
     if (user.blocked) {
-      console.log('Username ' + username + ' blocked!');
-      throw new Error('Username blocked!');   
+      console.log('Username ' + username + ' blocked! Contact your System Administrator.');
+      throw new Error('Username blocked! Contact your System Administrator.');   
     }
 
     const passwordMatch = await compare(password, user.password);
