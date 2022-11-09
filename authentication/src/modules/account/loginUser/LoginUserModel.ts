@@ -26,6 +26,11 @@ export class AuthenticateUserModel {
    
     if (!user) {
       throw new Error('Username or password invalid!');   
+    }    
+    
+    if (user.blocked) {
+      console.log('Username ' + username + ' blocked!');
+      throw new Error('Username blocked!');   
     }
 
     const passwordMatch = await compare(password, user.password);
@@ -60,12 +65,12 @@ export class AuthenticateUserModel {
       }
     })      
     
-    const record = await prisma.records.create({
-      data: {
-        username,
-        message: "authenticated",
-      },
-    })
+    // const record = await prisma.records.create({
+    //   data: {
+    //     username,
+    //     message: "authenticated",
+    //   },
+    // })
 
     return token;
   }

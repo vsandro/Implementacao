@@ -12,6 +12,7 @@ model Users {
   id       String @id @default(uuid())
   username String @unique
   password String
+  blocked Boolean @default(false)
 
   @@map("users")
 }

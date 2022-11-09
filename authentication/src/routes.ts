@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import { EnsureAuthenticateUser } from './middlewares/EnsureAuthenticateUser';
-import { AuthenticateUserController } from './modules/account/authenticateUser/AuthenticateUserController';
+import { AuthenticateUserController } from './modules/account/loginUser/LoginUserController';
 
 import { CreateUserController } from './modules/users/createUser/CreateUserController';
 
