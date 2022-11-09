@@ -11,7 +11,7 @@ const authenticateClientController = new AuthenticateUserController();
 const createClientController = new CreateUserController();
 
 
-routes.post('/user/authenticate', authenticateClientController.handle);
+routes.post('/user/login', authenticateClientController.handle);
 routes.post('/user/', createClientController.handle);
 
 routes.get('/customers', EnsureAuthenticateUser, (req, res, next) => { 

@@ -1,5 +1,5 @@
 import { hash } from 'bcrypt';
-import { prisma } from '../../../database/prismaClient';
+import { prisma } from '../../../database/prisma';
 
 interface ICreateUser {
   username: string;

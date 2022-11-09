@@ -118,7 +118,7 @@ cursus dignissim faucibus
 
 ```sh
 Authenticate - login
-http://localhost:3000/user/authenticate
+http://localhost:3000/user/login
 ```
 
 ```sh

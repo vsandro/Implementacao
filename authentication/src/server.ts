@@ -5,10 +5,6 @@ import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import { routes } from './routes';
 
-import { KafkaMessagingAdapter } from '../src/infra/messaging/kafka/adapters/kafka-messaging-adapter';
-
-const kafkaMessagingAdapter = new KafkaMessagingAdapter()
-
 const app = express();
 app.use(cors());
 
