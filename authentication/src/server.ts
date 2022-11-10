@@ -11,10 +11,6 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.listen(process.env.PORT || 3333, () => {
-  console.log('[Authentications] Server running');
-});
-
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
   if (err instanceof Error) {
     return response.status(400).json({
@@ -28,6 +24,8 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
   });
 });
 
-const PORT = 3000
+const PORT = process.env.PORT || 5000
 
-app.listen(PORT, () => console.log('Server is running in PORT ' + PORT));
+app.listen(process.env.PORT, () => {
+  console.log('[Authentications] Server running on port ' + PORT);
+});

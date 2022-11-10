@@ -11,8 +11,6 @@ export class UnlockUserModel {
     private messagingAdapter: MessagingAdapter,
   ) {}
   
-  message = "unlocked user"
-
   async execute({ username }: IUnlockUser) {
     const user = await prisma.users.findFirst({
       where: {
@@ -27,7 +25,17 @@ export class UnlockUserModel {
     if (user.blocked) {
       console.log('unlocked user ' + username ); 
     }
+     
+    await this.messagingAdapter.sendMessage('authentications.new-authorization', {
+      user: {
+        username: username,
+        message: "unlocked user",
+      }
+    })      
 
+  }
+
+  async update({ username }: IUnlockUser) {
     const updateUser = await prisma.users.update({
       where: {
         username,
@@ -36,17 +44,6 @@ export class UnlockUserModel {
         blocked: false,
       },
     })
-
-    //Verificar
-    console.log(updateUser)
-      
-    await this.messagingAdapter.sendMessage('authentications.new-authorization', {
-      user: {
-        username: username,
-        message: "unlocked user",
-      }
-    })      
-
-    }
+  } 
 
 }

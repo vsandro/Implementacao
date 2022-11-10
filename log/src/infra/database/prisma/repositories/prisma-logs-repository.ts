@@ -1,5 +1,5 @@
 import { LogsRepository } from "../../../../application/repositories/records-repository";
-import { Record } from "../../../../domain/log";
+import { Record } from "../../../../domain/record";
 import { prisma } from "../prisma";
 
 export class PrismaLogsRepository implements LogsRepository {

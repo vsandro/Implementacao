@@ -15,8 +15,6 @@ export class AuthenticateUserModel {
     private messagingAdapter: MessagingAdapter,
   ) {}
   
-  message = "authenticated"
-
   async execute({ username, password }: IAuthenticateUser) {
     const user = await prisma.users.findFirst({
       where: {

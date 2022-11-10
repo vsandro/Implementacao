@@ -1,7 +1,7 @@
-import { Record } from "../../domain/log";
+import { Record } from "../../domain/record";
 import { RecordsRepository } from "../repositories/records-repository";
 
-interface RegisteRecordRequest {
+interface RecordRequest {
   user: {
     username: string;
     message: string;
@@ -14,7 +14,7 @@ export class RegisteUserTorecord {
     private recordsRepository: RecordsRepository,
   ) {}
 
-  async execute(request: RegisteRecordRequest): Promise<void> {
+  async execute(request: RecordRequest): Promise<void> {
     let record = await this.recordsRepository.findByUserName(request.user.username);
 
     if (!record) {

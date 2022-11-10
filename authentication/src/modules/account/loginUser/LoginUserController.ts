@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { AuthenticateUserModel } from './LoginUserModel';
+import { AuthenticateUserModel } from './loginUserModel';
 
 import { KafkaMessagingAdapter } from '../../../infra/messaging/kafka/adapters/kafka-messaging-adapter';
 

@@ -1,4 +1,4 @@
-import { Record } from "../../domain/log";
+import { Record } from "../../domain/record";
 
 export interface RecordsRepository {
   findByUserName(username: String): Promise<Record | null>;
