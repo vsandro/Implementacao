@@ -34,17 +34,18 @@ Implementação de 2 microsserviços:
 
 ## 3. Tecnologias (Techs)
 
-- NodeJs
+- NodeJs (web server with express)
 - Banco de dados PostgreSQL
-- Knex migrations
+- Knex migrations (cria os objetos do banco de dados)
+- Bcrypt (criprografia da password no banco de dados)
 - Web Token (JWT)
 
 
-## 4. Funcionalidades
+## 4. Funcionalidades (Functionalities)
 
-- Login;
-- Logout;
-- CRUD users;
+- Login (register user);
+- Unlock (user unlock);
+- CRUD users (Create, Read, Update, and Delete);
 
 
 ## 5. Instalação e execução.
@@ -54,6 +55,16 @@ Implementação de 2 microsserviços:
 ```sh
 git clone https://github.com/vsandro/Implementacao.git
 ```
+
+**Docker**
+
+- Executar o docker-compose:
+
+```sh
+cd implementacao
+docker-compose up -d
+```
+
 
 **Banco de dados**
 
@@ -122,8 +133,8 @@ http://localhost:3000/user/login
 ```
 
 ```sh
-Authenticate - logout
-http://localhost:3000/user/logout
+Authenticate - unlock
+http://localhost:3000/user/unlock
 ```
 
 ```sh
@@ -134,5 +145,3 @@ http://localhost:3000/user
 ## 6. Autoria
 
 Este projeto foi desenvolvido pelos alunos [Jorge Santos - 26831](https://www.linkedin.com/in/filipesantos1992) e [Sandro Alves - 24460](https://www.linkedin.com/in/vsandro) conforme requisitos definidos pelo professor e orientador Miguel Lopes na UC de Sistemas de Computação na Cloud.
-
-

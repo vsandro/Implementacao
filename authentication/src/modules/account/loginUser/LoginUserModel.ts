@@ -39,7 +39,7 @@ export class AuthenticateUserModel {
           username: username,
           message: "access denied",
         }
-      })  
+      }) 
       
       const record = await prisma.records.create({
         data: {
