@@ -63,14 +63,7 @@ export class AuthenticateUserModel {
         username: username,
         message: "authenticated",
       }
-    })      
-    
-    // const record = await prisma.records.create({
-    //   data: {
-    //     username,
-    //     message: "authenticated",
-    //   },
-    // })
+    })       
 
     return token;
   }

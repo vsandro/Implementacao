@@ -9,21 +9,21 @@ interface RegisteRecordRequest {
   purchasesEnrolledByPurchaseId?: string;
 }
 
-export class RegisteUserToLog {
+export class RegisteUserTorecord {
   constructor(
-    private logsRepository: RecordsRepository,
+    private recordsRepository: RecordsRepository,
   ) {}
 
   async execute(request: RegisteRecordRequest): Promise<void> {
-    let log = await this.logsRepository.findByUserName(request.user.username);
+    let record = await this.recordsRepository.findByUserName(request.user.username);
 
-    if (!log) {
-      log = new Record({
+    if (!record) {
+      record = new Record({
         username: request.user.username,
         message: request.user.message,
       })
 
-      await this.logsRepository.create(log)
+      await this.recordsRepository.create(record)
     }
 
   }

@@ -133,6 +133,6 @@ http://localhost:3000/user
 
 ## 6. Autoria
 
-Este projeto foi desenvolvido pelos alunos [Jorge Santos - 26831] e [Sandro Alves - 24460](https://www.linkedin.com/in/vsandro) conforme requisitos definidos pelo professor e orientador Miguel Lopes na UC de Sistemas de Computação na Cloud.
+Este projeto foi desenvolvido pelos alunos [Jorge Santos - 26831](https://www.linkedin.com/in/filipesantos1992) e [Sandro Alves - 24460](https://www.linkedin.com/in/vsandro) conforme requisitos definidos pelo professor e orientador Miguel Lopes na UC de Sistemas de Computação na Cloud.
 
 

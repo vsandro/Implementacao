@@ -11,7 +11,7 @@ export class UnlockUserModel {
     private messagingAdapter: MessagingAdapter,
   ) {}
   
-  message = "authenticated"
+  message = "unlocked user"
 
   async execute({ username }: IUnlockUser) {
     const user = await prisma.users.findFirst({
@@ -21,30 +21,32 @@ export class UnlockUserModel {
     });
    
     if (!user) {
-      throw new Error('Username or password invalid!');   
+      throw new Error('Username invalid!');   
     }    
     
     if (user.blocked) {
-      console.log('Username ' + username + ' unlock!'); 
+      console.log('unlocked user ' + username ); 
     }
+
+    const updateUser = await prisma.users.update({
+      where: {
+        username,
+      },
+      data: {
+        blocked: false,
+      },
+    })
+
+    //Verificar
+    console.log(updateUser)
       
-      const record = await prisma.records.create({
-        data: {
-          username,
-          message: "unlock",
-        },
-      })     
+    await this.messagingAdapter.sendMessage('authentications.new-authorization', {
+      user: {
+        username: username,
+        message: "unlocked user",
+      }
+    })      
 
     }
-
-    // await this.messagingAdapter.sendMessage('authentications.new-authorization', {
-    //   user: {
-    //     username: username,
-    //     message: "unlock",
-    //   }
-    // })      
-    
-//     return token;
-//   }
 
 }
