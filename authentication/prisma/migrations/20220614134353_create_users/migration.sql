@@ -4,6 +4,7 @@ CREATE TABLE "users" (
     "username" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "blocked" BOOLEAN NOT NULL,
+    "failed" INTEGER NOT NULL,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
@@ -12,4 +13,5 @@ CREATE TABLE "users" (
 CREATE UNIQUE INDEX "users_username_key" ON "users"("username");
 
 -- AlterTable
-ALTER TABLE "users" ALTER COLUMN "blocked" SET DEFAULT false;
+ALTER TABLE "users" ALTER COLUMN "blocked" SET DEFAULT false,
+ALTER COLUMN "failed" SET DEFAULT 0;

@@ -42,6 +42,7 @@ export class UnlockUserModel {
       },
       data: {
         blocked: false,
+        failed: 0,
       },
     })
   } 

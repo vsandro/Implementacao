@@ -41,13 +41,28 @@ export class AuthenticateUserModel {
         }
       }) 
       
-      const record = await prisma.records.create({
-        data: {
+      const countFailed = user.failed + 1
+
+      if (countFailed === 3) {
+        const updateUser = await prisma.users.update({
+          where: {
+            username,
+          },
+          data: {
+            blocked: true,
+          },
+        })
+      }
+
+      const updateUser = await prisma.users.update({
+        where: {
           username,
-          message: "access denied",
+        },
+        data: {
+          failed: countFailed,
         },
       })
-        
+            
       throw new Error('Username or password invalid!');
     }
 
@@ -56,6 +71,15 @@ export class AuthenticateUserModel {
       expiresIn: '1d', // Validade do TOKEN de acesso
     })
 
+    const updateUser = await prisma.users.update({
+      where: {
+        username,
+      },
+      data: {
+        failed: 0,
+      },
+    })
+             
     await this.messagingAdapter.sendMessage('authentications.new-authorization', {
       user: {
         username: username,

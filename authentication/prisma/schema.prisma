@@ -13,17 +13,10 @@ model Users {
   username String @unique
   password String
   blocked Boolean @default(false)
+  failed Int @default(0)
 
   @@map("users")
 }
 
-model Records {
-  id       String @id @default(uuid())
-  username String 
-  message  String
-  create_at DateTime @default(now())
-
-  @@map("records")
-}
 
 
