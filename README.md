@@ -32,7 +32,7 @@ Implementação de 2 microsserviços:
 - Microsserviço de armazenamento de logs (log)
 
 
-## 3. Tecnologias (Techs)
+## 3. Tecnologias (Technologies)
 
 - NodeJs (web server with express)
 - Banco de dados PostgreSQL
@@ -123,18 +123,18 @@ cursus dignissim faucibus
 ```
 
 
-**Insomnia**
+**Postman**
 
 - Nulla cursus dignissim faucibus. Proin leo sapien, ultrices ut turpis nec, lobortis eleifend felis.
 
 ```sh
 Authenticate - login
-http://localhost:3000/user/login
+http://localhost:3000/login
 ```
 
 ```sh
 Authenticate - unlock
-http://localhost:3000/user/unlock
+http://localhost:3000/unlock
 ```
 
 ```sh

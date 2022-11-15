@@ -3,6 +3,11 @@ import { kafka } from "./kafka/kafka"
 
 import { prisma } from '../../../src/database/prismaClient';
 
+import cors from 'cors';
+
+import express, { NextFunction, Request, response, Response } from 'express';
+import 'express-async-errors';
+
 interface NewMessage {
   user: {
     username: string;
@@ -11,7 +16,6 @@ interface NewMessage {
 }
 
 async function main() {
-   
   const consumer = kafka.consumer({ groupId: 'record-logs-group', allowAutoTopicCreation: true })
 
   await consumer.connect()
@@ -29,12 +33,12 @@ async function main() {
 
       console.log(`[Record] User ${recordAuthentication.user.username} - ${recordAuthentication.user.message}`)
 
-      const record = await prisma.records.create({
+       const record = await prisma.records.create({
         data: {
           username: recordAuthentication.user.username,
           message: recordAuthentication.user.message,
         },
-      })     
+      })
        
     },
   })
@@ -43,3 +47,4 @@ async function main() {
 main().then(() => {
   console.log('[Log] Listening to Kafka messages')
 })
+

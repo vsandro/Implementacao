@@ -7,13 +7,13 @@
 	},
 	"item": [
 		{
-			"name": "localhost:3000/login",
+			"name": "login",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"username\": \"svieira\",\r\n\"password\": \"123456\"\r\n}",
+					"raw": "{\r\n\"username\": \"claudio\",\r\n\"password\": \"123456--\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -35,13 +35,13 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/user",
+			"name": "create user",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"username\": \"svieira\",\r\n\"password\": \"123456\"\r\n}",
+					"raw": "{\r\n\"username\": \"ana\",\r\n\"password\": \"123456\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -49,21 +49,20 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/user/login",
+					"raw": "localhost:3000/user",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"user",
-						"login"
+						"user"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "localhost:3000/unlock",
+			"name": "unlock",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -79,7 +78,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"username\": \"ana\"\r\n}",
+					"raw": "{\r\n\"username\": \"claudio\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

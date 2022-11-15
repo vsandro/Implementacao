@@ -14,9 +14,8 @@ const authenticateClientController = new AuthenticateUserController();
 const unlockUserController = new UnlockUserController();
 const createClientController = new CreateUserController();
 
-routes.post('/user/login', authenticateClientController.handle);
-routes.post('/user/', createClientController.handle);
-
-routes.post('/user/unlock', EnsureAuthenticateUser, unlockUserController.handle);
+routes.post('/login', authenticateClientController.handle);
+routes.post('/user', createClientController.handle);
+routes.post('/unlock', EnsureAuthenticateUser, unlockUserController.handle);
 
 export { routes };

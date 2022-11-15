@@ -22,17 +22,23 @@ export class UnlockUserModel {
       throw new Error('Username invalid!');   
     }    
     
+    if (!user.blocked) {
+      console.log('user ' + username + ' not blocked');
+      return false
+    }
+
     if (user.blocked) {
       console.log('unlocked user ' + username ); 
-    }
-     
-    await this.messagingAdapter.sendMessage('authentications.new-authorization', {
-      user: {
-        username: username,
-        message: "unlocked user",
-      }
-    })      
 
+      await this.messagingAdapter.sendMessage('authentications.new-authorization', {
+        user: {
+          username: username,
+          message: "unlocked user",
+        }
+      })  
+    } 
+ 
+    return true
   }
 
   async update({ username }: IUnlockUser) {

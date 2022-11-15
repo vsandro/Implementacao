@@ -6,7 +6,6 @@ interface RecordRequest {
     username: string;
     message: string;
   }
-  purchasesEnrolledByPurchaseId?: string;
 }
 
 export class RegisteUserTorecord {

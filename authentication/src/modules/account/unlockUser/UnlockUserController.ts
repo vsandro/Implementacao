@@ -14,10 +14,12 @@ export class UnlockUserController {
       username,
     });
 
-    await unlockUserModel.update({
-      username,
-    });
-
-    return response.json({return: "unlocked user"});
+    if (result) {
+      await unlockUserModel.update({
+        username,
+      });
+      return response.json({return: "unlocked user"});
+    }
+    return response.json({return: "Ok"});
   }
 }
