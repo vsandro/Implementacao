@@ -3,11 +3,6 @@ import { kafka } from "./kafka/kafka"
 
 import { prisma } from '../../../src/database/prismaClient';
 
-import cors from 'cors';
-
-import express, { NextFunction, Request, response, Response } from 'express';
-import 'express-async-errors';
-
 interface NewMessage {
   user: {
     username: string;
