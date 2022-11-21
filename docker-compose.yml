@@ -1,0 +1,80 @@
+version: '3'
+
+services:
+  elasticsearch01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
+    container_name: elasticsearch01
+    ports: 
+      - 9200:9200
+      - 9300:9300
+    environment:
+      discovery.type: single-node
+    networks:
+      - elastic
+  
+  kibana01:
+    image: docker.elastic.co/kibana/kibana:7.9.2
+    container_name: kibana01
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch01:9200
+      ELASTICSEARCH_HOSTS: http://elasticsearch01:9200
+    networks:
+      - elastic
+
+  database:
+    container_name: authenticationCloudComputing
+    image: 'postgres:alpine'
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgresql_data:/var/lib/postgresql'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+    networks:
+      - app-net
+
+  zookeeper:
+    container_name: authenticationCloudComputing_zookeeper
+    image: 'bitnami/zookeeper:3'
+    ports:
+      - '2181:2181'
+    volumes:
+      - 'zookeeper_data:/bitnami'
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - app-net
+
+  kafka:
+    container_name: authenticationCloudComputing_kafka
+    image: 'bitnami/kafka:2'
+    ports:
+      - '9092:9092'
+    volumes:
+      - 'kafka_data:/bitnami'
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_CFG_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      - zookeeper
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: bridge
+  elastic:
+    driver: bridge
+    
+volumes:
+  zookeeper_data:
+    driver: local
+  kafka_data:
+    driver: local
+  postgresql_data:
+    driver: local
