@@ -1,6 +1,28 @@
 version: '3'
 
 services:
+  elasticsearch01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
+    container_name: elasticsearch01
+    ports: 
+      - 9200:9200
+      - 9300:9300
+    environment:
+      discovery.type: single-node
+    networks:
+      - elastic
+  
+  kibana01:
+    image: docker.elastic.co/kibana/kibana:7.9.2
+    container_name: kibana01
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch01:9200
+      ELASTICSEARCH_HOSTS: http://elasticsearch01:9200
+    networks:
+      - elastic
+
   database:
     container_name: authenticationCloudComputing
     image: 'postgres:alpine'
@@ -43,10 +65,41 @@ services:
     networks:
       - app-net
 
+  php:
+    image: php:7.4-apache
+    ports:
+      - 80:80
+    volumes:
+      - ./php/www:/var/www/html/
+    extra_hosts:
+      - "localhost:172.16.3.1"
+    
+ 
+  samba:
+    container_name: samba_implementacao
+    image: dperson/samba:latest
+    environment:
+      TZ: 'Europe/Brussels'
+    networks:
+      - default
+    ports:
+      - "446:446/tcp"
+    read_only: true
+    tmpfs:
+      - /tmp
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    volumes:
+      - $HOME/docker:/dockerdata:z
+    command: '-s "Docker;/dockerdata" -n'
+
 networks:
   app-net:
     driver: bridge
-
+  elastic:
+    driver: bridge
+    
 volumes:
   zookeeper_data:
     driver: local
