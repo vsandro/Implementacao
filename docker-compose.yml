@@ -65,6 +65,35 @@ services:
     networks:
       - app-net
 
+  php:
+    image: php:7.4-apache
+    ports:
+      - 80:80
+    volumes:
+      - ./php/www:/var/www/html/
+    extra_hosts:
+      - "localhost:172.16.3.31"
+    
+ 
+  samba:
+    container_name: samba_implementacao
+    image: dperson/samba:latest
+    environment:
+      TZ: 'Europe/Brussels'
+    networks:
+      - default
+    ports:
+      - "446:446/tcp"
+    read_only: true
+    tmpfs:
+      - /tmp
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    volumes:
+      - $HOME/docker:/dockerdata:z
+    command: '-s "Docker;/dockerdata" -n'
+
 networks:
   app-net:
     driver: bridge
