@@ -27,52 +27,28 @@ if($session==0){
 
 <body>
 
-	<div class="container-fluid ">
-		<div class="row">
-			<div class="col-12 mt-3">
-			<ul class="nav nav-tabs" role="tablist">
-				<li class="nav-item">
-					<a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Kibana</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Desbloquar utilizadores</a>
-				</li>
-			</ul><!-- Tab panes -->
-			<div class="tab-content">
-				<div class="tab-pane active" id="tabs-1" role="tabpanel">
-					<iframe width="100%" style="height:100vh" frameBorder="0" src="http://127.0.0.1:5601/app/dashboards#/view/a40907c0-6824-11ed-9a41-e1b3ee94847e?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(description:'Log%20autentica%C3%A7%C3%A3o',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:'Log%20autentica%C3%A7%C3%A3o',viewMode:view)
-" title="W3Schools Free Online Web Tutorials"></iframe>
+	<div class="container mt-5">
+		<div class="d-flex justify-content-center h-100" style="overflow:hidden; padding:5px">
+			<div class="formContent" id="formContentLogin">
+				<!-- Icon -->
+				<div class="first">
+					<img src="logo.png" class="p-3 d-block m-auto" style="width:35%">
+					<h1 class="mb-3 mt-4">UNLOCK USERS</h1>
 				</div>
-				<div class="tab-pane" id="tabs-2" role="tabpanel">
-					<div class="container mt-5">
-						<div class="d-flex justify-content-center h-100" style="overflow:hidden; padding:5px">
-							<div class="formContent" id="formContentLogin">
-								<!-- Icon -->
-								<div class="first">
-									<img src="logo.png" class="p-3 d-block m-auto" style="width:35%">
-									<h1 class="mb-3 mt-4">UNLOCK USERS</h1>
-								</div>
-								<!-- Login Form -->
-								<form method="post" id="form_unlock">
-									<div id="status" style="width:85%; margin:auto; margin-bottom: 5px;"></div>
-									<input type="text" id="username" class="second zero-raduis" name="username" placeholder="username">
-									
-									<input type="submit" class="fourth  btn_login zero-raduis" style="margin-bottom:5px" value="Unlock">  
-									<input type="button" class="fourth  btn_login zero-raduis" id="logout" value="Logout">  
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
+				<!-- Login Form -->
+				<form method="post" id="form_unlock">
+					<div id="status" style="width:85%; margin:auto; margin-bottom: 5px;"></div>
+					<input type="text" id="username" class="second zero-raduis" name="username" placeholder="username">
+					
+					<input type="submit" class="fourth  btn_login zero-raduis" style="margin-bottom:5px" value="Unlock">  
+					<input type="button" class="fourth  btn_login zero-raduis" id="logout" value="Logout">  
+				</form>
 			</div>
 		</div>
 	</div>
-	
-		
+	<iframe width="100%" height="100%" frameBorder="0" src="http://127.0.0.1:5601/app/management/kibana/indexPatterns?bannerMessage=In%20order%20to%20visualize%20and%20explore%20data%20in%20Kibana,%20you%27ll%20need%20to%20create%20an%20index%20pattern%20to%20retrieve%20data%20from%20Elasticsearch." title="W3Schools Free Online Web Tutorials"></iframe>
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
 		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"  crossorigin="anonymous"></script>
-		
 	<script>
 		$(document).ready(function (e) {
  
