@@ -59,9 +59,10 @@ services:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
       - KAFKA_CFG_OFFSETS_TOPIC_REPLICATION_FACTOR=1
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
-      - ALLOW_PLAINTEXT_LISTENER=yes
+      - ALLOW_PLAINTEXT_LISTENER=yes    
     depends_on:
       - zookeeper
+      - database
     networks:
       - app-net
 
