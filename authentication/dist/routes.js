@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.routes = void 0;
+const express_1 = require("express");
+const ensureAuthenticateUser_1 = require("./middlewares/ensureAuthenticateUser");
+const loginUserController_1 = require("./modules/account/loginUser/loginUserController");
+const unlockUserController_1 = require("./modules/account/unlockUser/unlockUserController");
+const createUserController_1 = require("./modules/users/createUser/createUserController");
+const routes = (0, express_1.Router)();
+exports.routes = routes;
+const authenticateClientController = new loginUserController_1.AuthenticateUserController();
+const unlockUserController = new unlockUserController_1.UnlockUserController();
+const createClientController = new createUserController_1.CreateUserController();
+routes.post('/login', authenticateClientController.handle);
+routes.post('/user', createClientController.handle);
+routes.post('/unlock', ensureAuthenticateUser_1.EnsureAuthenticateUser, unlockUserController.handle);

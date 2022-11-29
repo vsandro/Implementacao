@@ -1,11 +1,17 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
-    "outDir": "dist",
-    "strict": true,
-    "lib": [
-      "esnext"
-    ],
-    "esModuleInterop": true
-  }
+    "target": "es2017",                          
+    "module": "commonjs", 
+    "allowJs": true,                                            
+    "esModuleInterop": true,                  
+    "skipLibCheck": true,                     
+    "forceConsistentCasingInFileNames": true,
+    "outDir":"./dist",
+    "rootDir":"./src",
+    "strict":true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/swagger.json"
+  ]
 }

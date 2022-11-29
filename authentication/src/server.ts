@@ -24,7 +24,7 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
   });
 });
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 
 app.listen(process.env.PORT, () => {
   console.log('[Authentications] Server running on port ' + PORT);
