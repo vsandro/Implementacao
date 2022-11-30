@@ -5,6 +5,8 @@ import { sign } from 'jsonwebtoken';
 
 import { MessagingAdapter } from "../../../application/adapters/messaging-adapter";
 
+import getClient from '../../../client/elasticsearch'
+
 interface IAuthenticateUser {
   username: string;
   password: string;
@@ -21,6 +23,8 @@ export class AuthenticateUserModel {
         username,
       },
     });
+
+    const clientElasticSearc = getClient()
    
     if (!user) {
       throw new Error('Username or password invalid!');   
@@ -28,6 +32,7 @@ export class AuthenticateUserModel {
     
     if (user.blocked) {
       console.log('Username ' + username + ' blocked! Contact your System Administrator.');
+            
       throw new Error('Username blocked! Contact your System Administrator.');   
     }
 
@@ -40,9 +45,20 @@ export class AuthenticateUserModel {
           message: "access denied",
         }
       }) 
-      
+    
+      // Criar um registro no elasticsearch
+      const result = await clientElasticSearc.index({
+        index: 'elastic_index_login',
+        type: 'type_elastic_login',
+        body: {
+          username: username,
+          message: "access denied"
+        }
+      });
+
       const countFailed = user.failed + 1
 
+      //Requisito: Implementar um mecanismo de proteção contra brute-force
       if (countFailed === 3) {
         const updateUser = await prisma.users.update({
           where: {
@@ -52,6 +68,17 @@ export class AuthenticateUserModel {
             blocked: true,
           },
         })
+
+        //Criar um registro no elasticsearch
+        const result = await clientElasticSearc.index({
+          index: 'elastic_index_login',
+          type: 'type_elastic_login',
+          body: {
+            username: username,
+            message: 'user blocked'         
+          }
+        });  
+              
       }
 
       const updateUser = await prisma.users.update({
@@ -66,8 +93,11 @@ export class AuthenticateUserModel {
       throw new Error('Username or password invalid!');
     }
 
+    //Requisito: Armazenar as credenciais de forma segura    
     const token = sign({ username }, '739f8ebd49733117a132c34fe866bc09', {
       subject: user.id,
+
+      //Requisito: A autenticação deve expirar
       expiresIn: '1d', // Validade do TOKEN de acesso
     })
 
@@ -87,6 +117,16 @@ export class AuthenticateUserModel {
       }
     })       
 
+    // Criar um registro no elasticsearch
+    const result = await clientElasticSearc.index({
+      index: 'elastic_index_login',
+      type: 'type_elastic_login',
+      body: {
+        username: username,
+        message: "authenticated"
+      }
+    });
+        
     return token;
   }
 }

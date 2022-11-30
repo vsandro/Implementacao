@@ -1,0 +1,1 @@
+{"version":3,"file":"producer.js","sourceRoot":"","sources":["../../../../src/infra/messaging/kafka/producer.ts"],"names":[],"mappings":";;;AAAA,iCAA+B;AAElB,QAAA,QAAQ,GAAG,aAAK,CAAC,QAAQ,CAAC;IACrC,sBAAsB,EAAE,IAAI;CAC7B,CAAC,CAAA;AAEF,gBAAQ,CAAC,OAAO,EAAE,CAAC,IAAI,CAAC;IACtB,OAAO,CAAC,GAAG,CAAC,4CAA4C,CAAC,CAAC;AAC5D,CAAC,CAAC,CAAA"}
