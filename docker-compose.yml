@@ -72,7 +72,7 @@ services:
     volumes:
       - ./php/www:/var/www/html/
     extra_hosts:
-      - "localhost:172.16.3.1"
+      - "localhost:172.16.2.164"
     
  
   samba:

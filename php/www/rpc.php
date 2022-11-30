@@ -38,7 +38,7 @@ if(isset($_POST["op"]) && $_POST["op"]=="login"){
             $description="Invalid token";
         }
     }else{
-        $description="Error getting token";
+        $description="Error getting token *";
         $response=json_decode($response);
         if($response->message){
             $description=$response->message;
