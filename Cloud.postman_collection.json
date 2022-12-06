@@ -1,46 +1,19 @@
 {
 	"info": {
-		"_postman_id": "7e496a87-6347-4e34-8ad1-97653c1c2bf5",
-		"name": "Authentication",
+		"_postman_id": "7dcf97ad-f411-4ad7-b78b-8a18272cf20a",
+		"name": "Cloud",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "3266939"
 	},
 	"item": [
 		{
-			"name": "login",
+			"name": "register",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"username\": \"maria\",\r\n\"password\": \"123456\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:3000/login",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "create user",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"username\": \"jorge\",\r\n\"password\": \"123456\"\r\n}",
+					"raw": "{\r\n    \"username\": \"david\",\r\n    \"password\":  \"123456\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -61,6 +34,33 @@
 			"response": []
 		},
 		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"david\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "unlock",
 			"request": {
 				"auth": {
@@ -68,7 +68,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFsZXhhbmRyZSIsImlhdCI6MTY2OTc2MTk2MSwiZXhwIjoxNjY5ODQ4MzYxLCJzdWIiOiJmZTg3NzI3NC03YjQwLTQ4NjYtYTg2Zi1kNTI3MTc0MTlhYmMifQ.iS1417l-QyP_LDyqexeHoevpWFsQuO_rKI1ncwXXUks",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbmRybyIsImlhdCI6MTY3MDI2MjAzNSwiZXhwIjoxNjcwMzQ4NDM1LCJzdWIiOiIxZDIyMjAxMi0yOTdjLTRjNjMtYjZjNy1hY2UwZGNkMzllYzMifQ.RRJTv0Rc08FGGgLriVe00j3bruQJKBuSZrBxTbkMdnc",
 							"type": "string"
 						}
 					]
@@ -77,7 +77,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"username\": \"maria\"\r\n}",
+					"raw": "{\r\n    \"username\":\"david\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

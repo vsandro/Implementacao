@@ -8,7 +8,7 @@ $Functions = new Functions();
 if(isset($_POST["op"]) && $_POST["op"]=="login"){
     $curl = curl_init();
     curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://localhost:3000/login',
+        CURLOPT_URL => 'http://authentication:3000/login',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -26,7 +26,7 @@ if(isset($_POST["op"]) && $_POST["op"]=="login"){
     ));
     $response = curl_exec($curl);
     $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE); 
-
+    
     if($httpcode=="200" && $response){
         $data=$Functions->decode(str_replace('"', '', $response));
         if(isset($data) && is_array($data) && $data["username"]){ 
@@ -55,7 +55,7 @@ if(isset($_POST["op"]) && $_POST["op"]=="login"){
 if(isset($_POST["op"]) && $_POST["op"]=="register"){
     $curl = curl_init();
     curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://localhost:3000/user',
+        CURLOPT_URL => 'http://authentication:3000/user',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -112,7 +112,7 @@ if(isset($_POST["op"]) && $_POST["op"]=="unlock"){
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://localhost:3000/unlock',
+        CURLOPT_URL => 'http://authentication:3000/unlock',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -133,11 +133,11 @@ if(isset($_POST["op"]) && $_POST["op"]=="unlock"){
  
     $response=json_decode($response); 
     if($httpcode=="200" && $response){
-        if(isset($response->return) && $response->return=="Ok" ){ 
+        if(isset($response->return) && $response->return=="unlocked user" ){ 
             $status="success";
             $description="User unlocked";
         }else{
-            $description="Error when trying to unlock user";
+            $description="user not blocked";
             $status="error";
             if($response->message){
                 $description=$response->message;

@@ -40,8 +40,7 @@ if($session==0){
 			</ul><!-- Tab panes -->
 			<div class="tab-content">
 				<div class="tab-pane active" id="tabs-1" role="tabpanel">
-					<iframe width="100%" style="height:100vh" frameBorder="0" src="http://127.0.0.1:5601/app/dashboards#/view/a40907c0-6824-11ed-9a41-e1b3ee94847e?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(description:'Log%20autentica%C3%A7%C3%A3o',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:'Log%20autentica%C3%A7%C3%A3o',viewMode:view)
-" title="W3Schools Free Online Web Tutorials"></iframe>
+					<iframe width="100%" style="height:100vh" frameBorder="0" src="http://127.0.0.1:5601/goto/d4f2d505b1f4f2310e21b1fade36962e" title=""></iframe>
 				</div>
 				<div class="tab-pane" id="tabs-2" role="tabpanel">
 					<div class="container mt-5">

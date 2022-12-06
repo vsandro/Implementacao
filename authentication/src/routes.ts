@@ -1,21 +1,20 @@
-
 import { Router } from 'express';
 
-import { EnsureAuthenticateUser } from './middlewares/ensureAuthenticateUser';
+//import { EnsureAuthenticateUser } from './middlewares/ensureAuthenticateUser';
 
-import { AuthenticateUserController } from './modules/account/loginUser/loginUserController';
-import { UnlockUserController } from './modules/account/unlockUser/unlockUserController';
+import { LoginUserController } from './modules/account/loginUser/LoginUserController';
+import { UnlockUserController } from './modules/account/unlockUser/UnlockUserController';
 
-import { CreateUserController } from './modules/users/createUser/createUserController';
+import { CreateUserController } from './modules/users/createUser/CreateUserController';
 
 const routes = Router();
 
-const authenticateClientController = new AuthenticateUserController();
+const authenticateClientController = new LoginUserController();
 const unlockUserController = new UnlockUserController();
-const createClientController = new CreateUserController();
+const createUserController = new CreateUserController();
 
 routes.post('/login', authenticateClientController.handle);
-routes.post('/user', createClientController.handle);
-routes.post('/unlock', EnsureAuthenticateUser, unlockUserController.handle);
+routes.post('/user', createUserController.handle);
+routes.post('/unlock', unlockUserController.handle);
 
 export { routes };

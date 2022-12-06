@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { CreateUserModel } from './createUserModel';
+import { CreateUserModel } from './CreateUserModel';
 
 export class CreateUserController {
   async handle(request: Request, response: Response) {

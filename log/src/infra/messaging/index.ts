@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { kafka } from "./kafka/kafka"
 
-import { prisma } from '../../../src/database/prismaClient';
+import { prisma } from '../../database/prismaClient';
 
 interface NewMessage {
   user: {

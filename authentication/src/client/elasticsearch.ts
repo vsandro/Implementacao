@@ -1,9 +1,10 @@
+import 'dotenv/config';
 import elasticsearch from 'elasticsearch';
 
 
 function getClient() {
   const client = new elasticsearch.Client({
-    host: 'localhost:9200',
+    host:  process.env.ELASTIC,
     // log: 'trace'
   });
 

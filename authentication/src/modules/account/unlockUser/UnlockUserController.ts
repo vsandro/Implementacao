@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { UnlockUserModel } from './unlockUserModel';
+import { UnlockUserModel } from './UnlockUserModel';
 
 import { KafkaMessagingAdapter } from '../../../infra/messaging/kafka/adapters/kafka-messaging-adapter';
 
@@ -20,6 +20,7 @@ export class UnlockUserController {
       });
       return response.json({return: "unlocked user"});
     }
-    return response.json({return: "Ok"});
+
+    return response.json({return: "user not blocked"});
   }
 }

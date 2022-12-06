@@ -12,7 +12,7 @@ interface IAuthenticateUser {
   password: string;
 }
 
-export class AuthenticateUserModel {
+export class LoginUserModel {
   constructor(
     private messagingAdapter: MessagingAdapter,
   ) {}
