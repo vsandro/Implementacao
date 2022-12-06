@@ -36,13 +36,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.AuthenticateUserController = void 0;
-var loginUserModel_1 = require("./loginUserModel");
+exports.LoginUserController = void 0;
+var LoginUserModel_1 = require("./LoginUserModel");
 var kafka_messaging_adapter_1 = require("../../../infra/messaging/kafka/adapters/kafka-messaging-adapter");
-var AuthenticateUserController = /** @class */ (function () {
-    function AuthenticateUserController() {
+var LoginUserController = /** @class */ (function () {
+    function LoginUserController() {
     }
-    AuthenticateUserController.prototype.handle = function (request, response) {
+    LoginUserController.prototype.handle = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
             var _a, username, password, kafkaMessagingAdapter, authenticateUserModel, result;
             return __generator(this, function (_b) {
@@ -50,7 +50,7 @@ var AuthenticateUserController = /** @class */ (function () {
                     case 0:
                         _a = request.body, username = _a.username, password = _a.password;
                         kafkaMessagingAdapter = new kafka_messaging_adapter_1.KafkaMessagingAdapter();
-                        authenticateUserModel = new loginUserModel_1.AuthenticateUserModel(kafkaMessagingAdapter);
+                        authenticateUserModel = new LoginUserModel_1.LoginUserModel(kafkaMessagingAdapter);
                         return [4 /*yield*/, authenticateUserModel.execute({
                                 username: username,
                                 password: password
@@ -62,7 +62,7 @@ var AuthenticateUserController = /** @class */ (function () {
             });
         });
     };
-    return AuthenticateUserController;
+    return LoginUserController;
 }());
-exports.AuthenticateUserController = AuthenticateUserController;
-//# sourceMappingURL=loginUserController.js.map
+exports.LoginUserController = LoginUserController;
+//# sourceMappingURL=LoginUserController.js.map

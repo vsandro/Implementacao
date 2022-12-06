@@ -1,28 +1,6 @@
 version: '3'
 
 services:
-  elasticsearch01:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
-    container_name: elasticsearch01
-    ports: 
-      - 9200:9200
-      - 9300:9300
-    environment:
-      discovery.type: single-node
-    networks:
-      - app-net
-  
-  kibana01:
-    image: docker.elastic.co/kibana/kibana:7.9.2
-    container_name: kibana01
-    ports:
-      - 5601:5601
-    environment:
-      ELASTICSEARCH_URL: http://elasticsearch01:9200
-      ELASTICSEARCH_HOSTS: http://elasticsearch01:9200
-    networks:
-      - app-net
-
   database:
     container_name: database
     image: 'postgres:alpine'
@@ -64,7 +42,30 @@ services:
     networks:
       - app-net
 
+  kibana01:
+    container_name: kibana01
+    image: docker.elastic.co/kibana/kibana:7.9.2    
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch01:9200
+      ELASTICSEARCH_HOSTS: http://elasticsearch01:9200  
+    networks:
+      - app-net
+
+  elasticsearch01:
+    container_name: elasticsearch01
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2    
+    ports: 
+      - 9200:9200
+      - 9300:9300
+    environment:
+      discovery.type: single-node
+    networks:
+      - app-net
+
   php:
+    container_name: php
     image: php:7.4-apache
     ports:
       - 80:80
@@ -77,7 +78,8 @@ services:
       
   authentication:
     container_name: authentication
-    build: authentication
+    image: vsandro/autenticacao
+    # build: authentication
     ports:
       - "3000:3000"
     depends_on:

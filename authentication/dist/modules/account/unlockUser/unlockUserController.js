@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 exports.UnlockUserController = void 0;
-var unlockUserModel_1 = require("./unlockUserModel");
+var UnlockUserModel_1 = require("./UnlockUserModel");
 var kafka_messaging_adapter_1 = require("../../../infra/messaging/kafka/adapters/kafka-messaging-adapter");
 var UnlockUserController = /** @class */ (function () {
     function UnlockUserController() {
@@ -50,7 +50,7 @@ var UnlockUserController = /** @class */ (function () {
                     case 0:
                         username = request.body.username;
                         kafkaMessagingAdapter = new kafka_messaging_adapter_1.KafkaMessagingAdapter();
-                        unlockUserModel = new unlockUserModel_1.UnlockUserModel(kafkaMessagingAdapter);
+                        unlockUserModel = new UnlockUserModel_1.UnlockUserModel(kafkaMessagingAdapter);
                         return [4 /*yield*/, unlockUserModel.execute({
                                 username: username
                             })];
@@ -63,7 +63,7 @@ var UnlockUserController = /** @class */ (function () {
                     case 2:
                         _a.sent();
                         return [2 /*return*/, response.json({ "return": "unlocked user" })];
-                    case 3: return [2 /*return*/, response.json({ "return": "Ok" })];
+                    case 3: return [2 /*return*/, response.json({ "return": "user not blocked" })];
                 }
             });
         });
@@ -71,4 +71,4 @@ var UnlockUserController = /** @class */ (function () {
     return UnlockUserController;
 }());
 exports.UnlockUserController = UnlockUserController;
-//# sourceMappingURL=unlockUserController.js.map
+//# sourceMappingURL=UnlockUserController.js.map

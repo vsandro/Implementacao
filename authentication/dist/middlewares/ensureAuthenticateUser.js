@@ -60,4 +60,4 @@ function EnsureAuthenticateUser(request, response, next) {
     });
 }
 exports.EnsureAuthenticateUser = EnsureAuthenticateUser;
-//# sourceMappingURL=ensureAuthenticateUser.js.map
+//# sourceMappingURL=EnsureAuthenticateUser.js.map

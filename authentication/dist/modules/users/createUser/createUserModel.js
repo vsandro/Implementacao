@@ -80,4 +80,4 @@ var CreateUserModel = /** @class */ (function () {
     return CreateUserModel;
 }());
 exports.CreateUserModel = CreateUserModel;
-//# sourceMappingURL=createUserModel.js.map
+//# sourceMappingURL=CreateUserModel.js.map

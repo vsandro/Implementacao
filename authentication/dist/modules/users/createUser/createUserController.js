@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 exports.CreateUserController = void 0;
-var createUserModel_1 = require("./createUserModel");
+var CreateUserModel_1 = require("./CreateUserModel");
 var CreateUserController = /** @class */ (function () {
     function CreateUserController() {
     }
@@ -48,7 +48,7 @@ var CreateUserController = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         _a = request.body, username = _a.username, password = _a.password;
-                        createUserModel = new createUserModel_1.CreateUserModel();
+                        createUserModel = new CreateUserModel_1.CreateUserModel();
                         return [4 /*yield*/, createUserModel.execute({
                                 username: username,
                                 password: password
@@ -63,4 +63,4 @@ var CreateUserController = /** @class */ (function () {
     return CreateUserController;
 }());
 exports.CreateUserController = CreateUserController;
-//# sourceMappingURL=createUserController.js.map
+//# sourceMappingURL=CreateUserController.js.map

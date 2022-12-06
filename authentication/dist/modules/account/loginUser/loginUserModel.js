@@ -39,16 +39,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
-exports.AuthenticateUserModel = void 0;
+exports.LoginUserModel = void 0;
 var prisma_1 = require("../../../database/prisma");
 var bcrypt_1 = require("bcrypt");
 var jsonwebtoken_1 = require("jsonwebtoken");
 var elasticsearch_1 = __importDefault(require("../../../client/elasticsearch"));
-var AuthenticateUserModel = /** @class */ (function () {
-    function AuthenticateUserModel(messagingAdapter) {
+var LoginUserModel = /** @class */ (function () {
+    function LoginUserModel(messagingAdapter) {
         this.messagingAdapter = messagingAdapter;
     }
-    AuthenticateUserModel.prototype.execute = function (_a) {
+    LoginUserModel.prototype.execute = function (_a) {
         var username = _a.username, password = _a.password;
         return __awaiter(this, void 0, void 0, function () {
             var user, clientElasticSearc, passwordMatch, result_1, countFailed, updateUser_1, result_2, updateUser_2, token, updateUser, result;
@@ -170,7 +170,7 @@ var AuthenticateUserModel = /** @class */ (function () {
             });
         });
     };
-    return AuthenticateUserModel;
+    return LoginUserModel;
 }());
-exports.AuthenticateUserModel = AuthenticateUserModel;
-//# sourceMappingURL=loginUserModel.js.map
+exports.LoginUserModel = LoginUserModel;
+//# sourceMappingURL=LoginUserModel.js.map

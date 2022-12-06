@@ -40,7 +40,7 @@ if($session==0){
 			</ul><!-- Tab panes -->
 			<div class="tab-content">
 				<div class="tab-pane active" id="tabs-1" role="tabpanel">
-					<iframe width="100%" style="height:100vh" frameBorder="0" src="http://127.0.0.1:5601/goto/d4f2d505b1f4f2310e21b1fade36962e" title=""></iframe>
+					<iframe width="100%" style="height:100vh" frameBorder="0" src="http://127.0.0.1:5601/goto/3ddb02691eae45f453668c6a2bf3f1ae" title=""></iframe>
 				</div>
 				<div class="tab-pane" id="tabs-2" role="tabpanel">
 					<div class="container mt-5">
