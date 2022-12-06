@@ -21,10 +21,6 @@ Aplicação de autenticação com microsserviços.
 
 ### Objetivo
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-Vestibulum mollis mauris et libero suscipit, non convallis nisl commodo. Aenean ut risus eros.
-Aliquam blandit, orci vitae auctor fermentum.
-
 Implementação de 2 microsserviços:
 
 - Microsserviço de autenticação (authentication)
@@ -43,9 +39,9 @@ Implementação de 2 microsserviços:
 
 ## 4. Funcionalidades (Functionalities)
 
-- Login (register user);
-- Unlock (user unlock);
-- CRUD users (Create, Read, Update, and Delete);
+- Login (login user);
+- Unlock (unblock user);
+- Register (create users);
 
 
 ## 5. Instalação e execução.
@@ -115,16 +111,22 @@ npm run dev
 
 **Frontend**
 
-- Nulla cursus dignissim faucibus. Proin leo sapien, ultrices ut turpis nec, lobortis eleifend felis.
+- Atualize o ip no ficheiro docker-compose.yml pelo ip do seu computador na rede interna.
 
 ```sh
-cd frontend
-cursus dignissim faucibus
+php:
+    image: php:7.4-apache
+    ports:
+      - 80:80
+    volumes:
+      - ./php/www:/var/www/html/
+    extra_hosts:
+      - 'localhost:192.168.43.17'
 ```
 
 **Postman**
 
-- Nulla cursus dignissim faucibus. Proin leo sapien, ultrices ut turpis nec, lobortis eleifend felis. ok
+- Testar todos os endpoints via Postman:
 
 ```sh
 Authenticate - login
